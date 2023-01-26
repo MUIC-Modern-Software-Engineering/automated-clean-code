@@ -5,7 +5,8 @@ description = ""
 authors = ["The Gang Technology"]
 
 [tool.poetry.dependencies]
-python = ">3.7"
+python = ">=3.7,<4.0"
+
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.20.0"
@@ -14,6 +15,7 @@ pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
 ipykernel = "^6.15.1"
 flake8-annotations = "^2.9.1"
+flake8-eradicate = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
