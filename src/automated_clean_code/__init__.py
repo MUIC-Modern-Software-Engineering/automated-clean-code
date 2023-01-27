@@ -9,3 +9,15 @@ def add_numbers(x: int, y: int) -> int:
       (int). The sum of the two numbers.
     """
     return x + y
+
+
+def test(x: int, z: int) -> int:
+    """Multiply 2 numbers.
+
+    Args:
+        x: int
+        z: int
+
+    Returns: int
+    """
+    return x * z
