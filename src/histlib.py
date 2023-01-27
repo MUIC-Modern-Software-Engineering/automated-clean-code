@@ -12,7 +12,7 @@ def main():
     test_text = "hello"
     histogram_dict = make_histogram(test_text)
     output: Tuple[str, int, str, int] = find_max_and_min_count(histogram_dict)
-    print(f"Min Key = {output[0]} with count = {output[1]} \n Max Key = {output[2]} with count = {output[3]}")
+    print(f"Min Key = {output[2]} with count = {output[3]} \n Max Key = {output[0]} with count = {output[1]}")
 
 
 max_key = str
