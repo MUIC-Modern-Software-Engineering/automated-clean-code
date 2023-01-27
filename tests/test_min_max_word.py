@@ -41,16 +41,12 @@ def test_print_statistical_values_from_file(capfd: CaptureFixture[str], filename
 
 
 @mock.patch("argparse.ArgumentParser.parse_args", return_value=argparse.Namespace(fname=FILE_NAME))
-def test_parse_args(_mock_args, filename: str) -> None:
+def test_parse_args(_mock_args: argparse.Namespace, filename: str) -> None:
     assert automated_clean_code.parse_args() == argparse.Namespace(fname=filename)
 
 
 def test_compute_histogram_statistics() -> None:
-    histogram: Dict[str, int] = {
-        "apple": 4,
-        "pencil": 3,
-        "die": 2,
-    }
+    histogram: Dict[str, int] = {"apple": 4, "pencil": 3, "die": 2}
 
     statistics = automated_clean_code.HistogramStatistics = automated_clean_code.compute_histogram_statistics(histogram)
     assert statistics.max_key_value_pair.key == "apple"
