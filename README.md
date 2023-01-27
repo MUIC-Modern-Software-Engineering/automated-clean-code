@@ -1,7 +1,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MUIC-Modern-Software-Engineering_automated-clean-code&metric=coverage)](https://sonarcloud.io/summary/new_code?id=MUIC-Modern-Software-Engineering_automated-clean-code)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MUIC-Modern-Software-Engineering_automated-clean-code&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=MUIC-Modern-Software-Engineering_automated-clean-code)
-
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=pongchai_automated-clean-code)
 ## Setup Instruction
 ```
 poetry install
