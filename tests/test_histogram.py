@@ -1,3 +1,5 @@
+import os
+
 from automated_clean_code.exercise_20_histlib import (
     find_max_char_occurence,
     find_min_char_occurence,
@@ -7,7 +9,7 @@ from automated_clean_code.exercise_20_histlib import (
 
 
 def test_load_file():
-    fname = "./data/exercise_20_data.txt"
+    fname = os.path.join(os.path.dirname(__file__), "./data/exercise_20_data.txt")
     example_text = """apple
 banana
 apple
@@ -33,7 +35,7 @@ def test_find_min_char_occurence():
 
 
 def test_find_min_max_char_occurnces_in_file():
-    fname = "./data/exercise_20_data.txt"
+    fname = os.path.join(os.path.dirname(__file__), "./data/exercise_20_data.txt")
     maxmin = find_min_max_char_occurnces_in_file(fname)
     assert maxmin.max.character == "a"
     assert maxmin.max.count == 9
