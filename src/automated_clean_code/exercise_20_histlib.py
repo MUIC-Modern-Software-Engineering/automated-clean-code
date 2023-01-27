@@ -12,7 +12,7 @@ def create_histrogram(list_of_number: list) -> dict:
      list of number(list): a list of number
 
     Returns:
-      (int). The sum of the two numbers.
+      (Dictionary). Dictionary of key and frequency.
     """
     counter = {}
     for each_number in list_of_number:
@@ -32,7 +32,7 @@ def find_max_key(counter: dict) -> Tuple[int, int, int, int]:
       counter: dictionary of int and int
 
     Returns:
-      (int). The sum of the two numbers.
+      Tuple[int,int,int,int] cool stuff.
     """
     max_key = None
     min_key = None
