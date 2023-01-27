@@ -55,8 +55,8 @@ def compute_histogram_statistics(histogram: Dict[str, int]) -> HistogramStatisti
     Returns:
         statistics (min and max key-value pairs)
     """
-    max_key_value_pair: KeyValuePair = None
-    min_key_value_pair: KeyValuePair = None
+    max_key_value_pair: KeyValuePair = KeyValuePair("", 0)
+    min_key_value_pair: KeyValuePair = KeyValuePair("", 0)
 
     for k, v in histogram.items():
         if max_key_value_pair is None or v > max_key_value_pair.value:
@@ -83,7 +83,7 @@ def print_statistical_values_from_file(fname: str) -> None:
     print(f"Max Key = {statistics.max_key_value_pair.key} with count = {statistics.max_key_value_pair.value}")
 
 
-def parse_args() -> None:
+def parse_args() -> argparse.Namespace[str]:
     """Parse arguments using an argument parser to extract the file name."""
     parser = argparse.ArgumentParser(
         description="compute the entry with the most occurrence and the least occurrence form a file"
