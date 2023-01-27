@@ -30,13 +30,11 @@ def test_find_max_min_key_value_from_dict_empty():
     assert find_max_min_key_from_dict(sample_input) == got
 
 
-def test_hist_lib():
-    sample_input = "/Users/karan/Desktop/numcomp/lectures/automated-clean-code/tests/sample_file"
+def test_hist_lib(simple_test_data_file: str):
     got = ("", "g")
-    assert hist_lib(sample_input) == got
+    assert hist_lib(simple_test_data_file) == got
 
 
-def test_hist_lib_empty():
-    sample_input = "/Users/karan/Desktop/numcomp/lectures/automated-clean-code/tests/sample_file2"
+def test_hist_lib_empty(simple_empty_test_data_file: str):
     got = ("", "")
-    assert hist_lib(sample_input) == got
+    assert hist_lib(simple_empty_test_data_file) == got
