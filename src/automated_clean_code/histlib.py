@@ -46,6 +46,7 @@ def count_occurrence_from_file(file_name: str) -> Dict[str, int]:
 
     """
     word_counter: Dict[str, int] = {}
+    file_name = join(dirname(__file__), file_name)
     with open(file_name, "r") as file:
         for line in file:
             line = line.strip().lower()
@@ -102,5 +103,4 @@ def get_histogram_from_file() -> Histogram:
 
 
 if __name__ == "__main__":
-    print(join(dirname(__file__), "data/exercise_20_data.txt"))
     print(get_histogram_from_file())
