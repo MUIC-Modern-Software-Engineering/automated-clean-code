@@ -9,8 +9,7 @@ def create_histrogram(list_of_number: list) -> dict:
     """Add two numbers together.
 
     Args:a
-      x (int): a number
-      y (int): a number
+     list of number(list): a list of number
 
     Returns:
       (int). The sum of the two numbers.
@@ -30,8 +29,7 @@ def find_max_key(counter: dict) -> Tuple[int, int, int, int]:
     """Add two numbers together.
 
     Args:a
-      x (int): a number
-      y (int): a number
+      counter: dictionary of int and int
 
     Returns:
       (int). The sum of the two numbers.
