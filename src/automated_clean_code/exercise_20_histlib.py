@@ -2,17 +2,7 @@
 # and test fixture
 # the example data is in data/exercise20_data.txt
 import argparse
-from typing import Dict, List, Optional
-
-
-def get_file_name_from_args(args: List[str]) -> str:  # pragma: no cover
-    """Retrieve file name from arguments passed in."""
-    parser = argparse.ArgumentParser(
-        description="compute the entry with the most occurrence and the least occurrence form a file"
-    )
-    parser.add_argument("fname", metavar="N", type=str, help="filename to compute the histogram")
-    args = parser.parse_args()
-    return args.filename
+from typing import Dict, Optional
 
 
 class MinMax:
@@ -54,10 +44,10 @@ def main():  # pragma: no cover
     counter = fill_up_histogram(args.fname)
 
     # find max and min key
-    max_counter, max_key, min_counter, min_key = find_max_and_min_key(counter)
+    res = find_max_and_min_key(counter)
 
-    print(f"Min Key = {min_key} with count = {min_counter}")
-    print(f"Max Key = {max_key} with count = {max_counter}")
+    print(f"Min Key = {res.min_key} with count = {res.min_counter}")
+    print(f"Max Key = {res.max_key} with count = {res.max_counter}")
 
 
 def find_max_and_min_key(counter: Dict[str, int]) -> MinMax:
