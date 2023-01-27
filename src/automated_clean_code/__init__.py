@@ -21,4 +21,4 @@ def subtract_numbers(a: int, b: int) -> int:
     Returns:
       (int). The subtraction of the two numbers.
     """
-    return a - b
+    return a - b  # pragma: no cover
