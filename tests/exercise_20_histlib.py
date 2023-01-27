@@ -2,6 +2,7 @@
 # and test fixture
 # the example data is in data/exercise20_data.txt
 import argparse
+from typing import List, Dict
 
 
 def main():
@@ -24,7 +25,6 @@ def main():
                 counter[line] += 1
             else:
                 counter[line] = 0
-
     # find max key
     for k, v in counter.items():
         if max_key is None or v > max_counter:
@@ -36,6 +36,20 @@ def main():
 
     print(f'Min Key = {min_key} with count = {min_counter}')
     print(f'Max Key = {max_key} with count = {max_counter}')
+
+
+def countEntries(entries: List[str]) -> Dict[str, int]:
+    counter = {}
+    for entry in entries:
+        if entry in counter:
+            counter[entry] += 1
+        else:
+            counter[entry] = 1
+    return counter
+
+
+def test_countEntries():
+    assert {'A': 1, 'X': 3} == countEntries(['A', 'X', 'X', 'X'])
 
 
 def test_writeFunction():
@@ -51,8 +65,9 @@ def test_writeFunction():
     assert file_1_text == file_2_text
 
 
-
-
+def tearDown():
+    import os
+    os.remove('test_file.txt')
 
 
 if __name__ == '__main__':
