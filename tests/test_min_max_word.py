@@ -41,7 +41,7 @@ def test_print_statistical_values_from_file(capfd: CaptureFixture[str], filename
 
 
 @mock.patch("argparse.ArgumentParser.parse_args", return_value=argparse.Namespace(fname=FILE_NAME))
-def test_parse_args(filename: str) -> None:
+def test_parse_args(_mock_args, filename: str) -> None:
     assert automated_clean_code.parse_args() == argparse.Namespace(fname=filename)
 
 
