@@ -1,4 +1,4 @@
-def add_numbers(x: int, y: int) -> int:
+def add_numbers(a: int, b: int) -> int:
     """Add two numbers together.
 
     Args:a
@@ -8,4 +8,4 @@ def add_numbers(x: int, y: int) -> int:
     Returns:
       (int). The sum of the two numbers.
     """
-    return x + y
+    return a + b
