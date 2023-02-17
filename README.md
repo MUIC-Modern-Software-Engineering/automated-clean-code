@@ -31,6 +31,8 @@ poetry run python -m ipykernel install --user --name automated_clean_code
 
 ### Adjusting the Dependencies
 edit pyproject.toml or just do
+
+Hello 
 ```
 poetry add numpy
 ```
