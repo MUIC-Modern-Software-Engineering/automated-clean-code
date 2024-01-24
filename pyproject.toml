@@ -2,7 +2,7 @@
 name = "automated_clean_code"
 version = "0.1.0"
 description = ""
-authors = ["The Gang Technology"]
+authors = ["MUIC"]
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
