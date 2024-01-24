@@ -14,24 +14,24 @@ repos:
     - id: check-ast
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 7.0.0
     hooks:
       - id: flake8
         additional_dependencies:
           - flake8-annotations
           - flake8-docstrings
   - repo: https://github.com/psf/black
-    rev: 22.6.0
+    rev: 23.12.1
     hooks:
     -   id: black
     # https://github.com/psf/black/issues/438#issuecomment-522114098
         exclude: ^.+\/migrations\/.+
 
   - repo: https://github.com/psf/black
-    rev: 22.6.0
+    rev: 23.12.1
     hooks:
       - id: black-jupyter
   - repo: https://github.com/pycqa/isort
-    rev: 5.10.1
+    rev: 5.13.2
     hooks:
     - id: isort

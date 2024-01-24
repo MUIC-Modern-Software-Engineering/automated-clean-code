@@ -4,17 +4,17 @@ on: [ push ]
 
 env:
   PYTHON_VERSION: "3.9"
-  POETRY_VERSION: "1.2.0"
+  POETRY_VERSION: "1.7.1"
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -22,15 +22,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8
+
       - name: Lint with isort
         uses: isort/isort-action@master
         with:
-          isortVersion: "5.10.1"
+          isortVersion: "5.13.2"
 
       - name: Lint with black
         uses: psf/black@stable
         with:
-          version: "22.3.0"
+          version: "23.12.1"
 
       - name: Lint with flake8
         run: |
@@ -39,13 +40,13 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
   test-and-coverage:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -58,15 +59,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           poetry config virtualenvs.in-project true
 
-      - name: Set up Poetry cache
-        id: poetry-cache
-        uses: actions/cache@v2
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-
       - name: Install dependencies
-        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install
 
       - name: Test with Pytest
@@ -83,12 +76,12 @@ jobs:
   build-and-upload:
     needs: [test-and-coverage]
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Install Poetry
@@ -99,15 +92,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           poetry config virtualenvs.in-project true
 
-      - name: Set up Poetry cache
-        id: poetry-cache
-        uses: actions/cache@v2
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-
       - name: Install dependencies
-        if: steps.poetry-cache.outputs.cache-hit != 'true'
         run: poetry install
 
       - name: Build
@@ -124,21 +109,21 @@ jobs:
   sonarqube:
     # runs after test-and-coverage job
     needs: test-and-coverage
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
 
       - name: Download coverage report artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: coverage-report
 
       - name: SonarQube Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
